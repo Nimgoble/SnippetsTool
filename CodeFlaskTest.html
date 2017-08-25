@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="CodeFlask.js-master/src/prism.css">
+		<link rel="stylesheet" href="CodeFlask.js-master/src/codeflask.css">
+	</head>
+	<body>
+		<!--<div id="code" data-language='sql'></div>-->
+		<script src="CodeFlask.js-master/src/prism.js"></script>
+		<script src="CodeFlask.js-master/src/codeflask.js"></script>
+		<script src="CodeFlask.js-master/src/codeflask-editor.js"></script>
+		<script>
+			//var codeArea = document.getElementById("code");
+			var flask = new CodeFlask;
+			//flask.run('#code', { language: 'sql', lineNumbers: true });
+		</script>
+		<style>
+			#my-code-wrapper 
+			{
+				width:600px;
+				height:400px;
+				position:relative; /* Position must be: relative, absolute or fixed */
+				border:1px solid black !important;
+			}
+		</style>
+		<codeflask-editor id="my-code-wrapper" language="sql" style='border: 1px black'>
+		</codeflask-editor>
+	</body>
+</html>
