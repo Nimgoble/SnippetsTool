@@ -31,17 +31,66 @@ p {
     margin-bottom: 2em;
 }
 
-#save-snippet {
-    background-color: #1979CA; /* Blue */
-    border: none;
-    color: white; 
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    padding: 7px 16px;
-    margin-top: 2em; 
+/* button { */
+    /* background-color: #1979CA; /* Blue */
+    /* border: none; */
+    /* color: white;  */
+    /* text-align: center; */
+    /* text-decoration: none; */
+    /* display: inline-block; */
+    /* padding: 7px 16px; */
+    /* margin-top: 2em; */ 
+/* } */
+
+button:hover {
+    background-color: #3d6299;
 }
 
-#save-snippet:hover {
-    background-color: #3d6299;
+body
+{
+	padding:10px;
+}
+
+#snippets-container
+{
+	margin: 10px;
+}
+
+.snippet
+{
+	
+}
+
+.btn-circle 
+{
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	padding: 6px 0;
+	font-size: 12px;
+	line-height: 1.428571429;
+	border-radius: 15px;
+}
+.btn-circle.btn-lg 
+{
+	width: 50px;
+	height: 50px;
+	padding: 10px 16px;
+	font-size: 18px;
+	line-height: 1.33;
+	border-radius: 25px;
+}
+.btn-circle.btn-xl 
+{
+	width: 70px;
+	height: 70px;
+	padding: 10px 16px;
+	font-size: 24px;
+	line-height: 1.33;
+	border-radius: 35px;
+}
+
+.no-margin
+{
+	margin: 0px;
 }

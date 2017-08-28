@@ -11,12 +11,23 @@
 		<link rel="stylesheet" href="styles/base16-light.css">
 		<link rel="stylesheet" href="styles/custom.css">
 		<script src="scripts/jquery.min.js"></script>
+		<script src="scripts/knockout-3.4.2.js"></script>
 		<script src="scripts/codemirror.js"></script>
 		<script src="scripts/sql.js"></script>
 		<script src="scripts/script.js"></script>
+		<script src="scripts/main.js"></script>
+		<script type="text/javascript">
+        $(
+			function () 
+			{
+				ko.applyBindings(new MainViewModel());
+			}
+		);
+    </script>
 	</head>
     <body data-spy="scroll" data-target=".navbar" data-offset="10">
-			<nav class="navbar navbar-default navbar-fixed-top">
+		<div class='container-fluid'>
+			<!--<nav class="navbar navbar-default navbar-fixed-top">
 				<div class="container-fluid">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -28,34 +39,74 @@
 						<a class="navbar-brand" href="index.html"><img src="#">SQL WebApplication</a>
 					</div>
 				</div>
-			</nav>
-			<div class="container-fluid" id="user-input">
-				<form class="typeSelection">
-					<h3>Snippet Type</h3>
-					<input type="radio" name="snippetType" value="surroundsWith"> SurroundsWith <br>
-					<input type="radio" name="snippetType" value="expansion"> Expansion <br>
-				</form>
-				<h3>Text Editor</h3>
-				<p>Enter your SQL snippet here!</p>
-				<div id="codeeditor"></div>
-				<button id="save-snippet" type="button">Save Snippet</button>
+			</nav>-->
+			
+			<div class='row align-items-center m-3'>
+				<div class='col-md-2'>
+					<h1 class='no-margin'>Snippets</h1>
+				</div>
+				<div class='col-md-1'>
+					<button id="add-snippet" class='btn btn-default btn-circle' type="button" data-bind="click: addSnippet">
+						<i class='glyphicon glyphicon-plus'></i>
+					</button>
+				</div>
+				<div class='col-md-10'></div>
 			</div>
 			
-			<script>
-				var editor = CodeMirror(document.getElementById("codeeditor"),
-				{
-					mode: "text/x-mssql",
-					theme: "base16-light",
-					smartIndent: true,
-					tabSize: 4,
-					language: "sql",
-					lineNumbers: true,
-				});
-				
-			</script>
+			<div class='row'>
+				<form>
+					<div id="snippets-container" class='container-fluid form-group row' data-bind="foreach: {data:snippets, afterRender:snippetAfterRender}">
+						<div class="snippet container-fluid form-group row align-items-center" >
+							<div class='form-group row align-items-center'>
+								<label class='col-form-label col-md-2'>Title</label>
+								<div class='col-md-4'>
+									<input class='form-control' data-bind="textInput: title" />
+								</div>
+								<div class='form-control-plaintext col-md-6'>
+									<button id="add-snippet" class='btn btn-default btn-circle mt-0' type="button" data-bind="click: function(){$root.removeSnippet($data);}">
+										<i class='glyphicon glyphicon-remove'></i>
+									</button>
+								</div>
+							</div>
+							
+							<div class='form-group row align-items-center'>
+								<label class='col-form-label col-md-2'>Description</label>
+								<div class='col-md-4'>
+									<input class='form-control' data-bind="textInput: description" />
+								</div>
+							</div>
+							
+							<div class='form-group row'>
+								<label class='col-form-label col-md-2'>Types</label>
+								<div class='col-md-2'>
+									<select class='form-control' data-bind="options: $root.snippetTypes, optionsText: 'name', selectedOptions: snippetTypes" multiple="true"></select>
+								</div>
+							</div>
+							
+							<div class='form-group row'>
+								<label class='col-form-label col-md-2'>Snippet Text:</label>
+								<div class='col-md-10'>
+									<div class="codeeditor" ></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			
+			<div>
+				<div>ViewModel:</div>
+				<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+			</div>
+			
+			<div>
+				<button id="save-snippet" type="button">Save Snippet(s)</button>
+			</div>
+			
 			<div class="container-fluid" id="footer">
 				
 			</div>
-		<script src="scripts/bootstrap.min.js"></script>
+			<script src="scripts/bootstrap.min.js"></script>
+		</div>
     </body>
 </html>
