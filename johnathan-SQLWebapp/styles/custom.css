@@ -31,19 +31,31 @@ p {
     margin-bottom: 2em;
 }
 
-/* button { */
-    /* background-color: #1979CA; /* Blue */
-    /* border: none; */
-    /* color: white;  */
-    /* text-align: center; */
-    /* text-decoration: none; */
-    /* display: inline-block; */
-    /* padding: 7px 16px; */
-    /* margin-top: 2em; */ 
-/* } */
+#save-snippet {
+    background-color: #1979CA; /* Blue */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 7px 16px;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
 
-button:hover {
-    background-color: #3d6299;
+#add-snippet {
+	background-color: #1979CA; /* Blue */
+	border: none;
+	color: white;
+	margin-top: 1em;
+}
+
+#save-snippet:hover {
+    background-color: #3d6299; /* Dark Blue */
+}
+
+#add-snippet:hover {
+	background-color: #3d6299; /* Dark Blue */
 }
 
 body
