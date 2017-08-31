@@ -3,21 +3,17 @@ ko.bindingHandlers.codemirror =
 {
     init: function(element, valueAccessor, allBindings, viewModel, bindingContext) 
     {
-        alert('init');
-        var value = valueAccessor();
-        //var unwrapped = ko.unwrap();
-        var unwrapped = ko.utils.unwrapObservable(valueAccessor());
-        var options = viewModel.options || {};
-        options.value = ko.unwrap(valueAccessor());
-        var editor = CodeMirror(element, options);
+        var options = valueAccessor();
+        options.codeMirrorOptions.value = ko.utils.unwrapObservable(options.binding) || '';
+        var editor = CodeMirror(element, options.codeMirrorOptions);
 
         editor.on
         (
             'change', 
             function(cm) 
             {
-                var value = valueAccessor();
-                value(cm.getValue());
+                var options = valueAccessor();
+                options.binding(cm.getValue());
             }
         );
 
@@ -25,12 +21,13 @@ ko.bindingHandlers.codemirror =
     },
     update: function(element, valueAccessor, allBindings, viewModel, bindingContext) 
     {
-        alert('update');
-        var observedValue = ko.unwrap(valueAccessor());
+        var options = valueAccessor();
+        var observedValue = ko.unwrap(options.binding) || '';
         if (element.editor) 
         {
+            var cursorPos = element.editor.getCursor();
             element.editor.setValue(observedValue);
-            element.editor.refresh();
+            element.editor.setCursor(cursorPos);
         }
     }
 };

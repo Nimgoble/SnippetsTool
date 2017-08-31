@@ -13,6 +13,7 @@
 		<script src="scripts/jquery.min.js"></script>
 		<script src="scripts/knockout-3.4.2.js"></script>
 		<script src="scripts/codemirror.js"></script>
+		<script src="scripts/ko.codemirror.js"></script>
 		<script src="scripts/sql.js"></script>
 		<script src="scripts/script.js"></script>
 		<script src="scripts/main.js"></script>
@@ -75,7 +76,8 @@
 									<div class='form-group row'>
 										<label class='col-form-label col-md-2'>Snippet Text:</label>
 										<div class='col-md-10'>
-											<div class="codeeditor" ></div>
+											<div class="codeeditor" data-bind="codemirror: { binding: snippetCode, codeMirrorOptions: { mode: 'text/x-mssql', theme: 'base16-light', smartIndent: true, tabSize: 4, language: 'sql', lineNumbers: true }}" ></div>
+											<!--<div class="codeeditor" data-bind="codemirror: { testProperty: 1, testPropert2: 2}" ></div>-->
 										</div>
 									</div>
 									

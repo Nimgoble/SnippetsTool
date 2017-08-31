@@ -19,21 +19,21 @@ var MainViewModel = function()
 	
 	this.snippetAfterRender = function()
 	{
-		var newOnes = $(".codeeditor:not(:has(.CodeMirror))").each
-		(
-			function(index, obj)
-			{
-				var editor = CodeMirror(obj,
-				{
-					mode: "text/x-mssql",
-					theme: "base16-light",
-					smartIndent: true,
-					tabSize: 4,
-					language: "sql",
-					lineNumbers: true,
-				});
-			}
-		);
+		// var newOnes = $(".codeeditor:not(:has(.CodeMirror))").each
+		// (
+		// 	function(index, obj)
+		// 	{
+		// 		var editor = CodeMirror(obj,
+		// 		{
+		// 			mode: "text/x-mssql",
+		// 			theme: "base16-light",
+		// 			smartIndent: true,
+		// 			tabSize: 4,
+		// 			language: "sql",
+		// 			lineNumbers: true
+		// 		});
+		// 	}
+		// );
 	}
 }
 
@@ -49,5 +49,5 @@ var Snippet = function()
 	this.title = ko.observable("Title");
 	this.description = ko.observable("Description");
 	this.snippetTypes = ko.observableArray([]);
-	this.snippetCode = ko.observable(null);
+	this.snippetCode = ko.observable(null).withPausing();
 }
