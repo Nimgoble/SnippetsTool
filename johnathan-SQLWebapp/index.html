@@ -13,6 +13,7 @@
 		<script src="scripts/jquery.min.js"></script>
 		<script src="scripts/knockout-3.4.2.js"></script>
 		<script src="scripts/codemirror.js"></script>
+		<script src="scripts/ko.codemirror.js"></script>
 		<script src="scripts/sql.js"></script>
 		<script src="scripts/script.js"></script>
 		<script src="scripts/main.js"></script>
@@ -53,6 +54,11 @@
 				<div class='col-md-10'></div>
 			</div>
 			
+			<div>
+				<div>ViewModel:</div>
+				<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+			</div>
+			
 			<div class='row'>
 				<form>
 					<div id="snippets-container" class='container-fluid form-group row' data-bind="foreach: {data:snippets, afterRender:snippetAfterRender}">
@@ -86,17 +92,13 @@
 							<div class='form-group row'>
 								<label class='col-form-label col-md-2'>Snippet Text:</label>
 								<div class='col-md-10'>
-									<div class="codeeditor" ></div>
+									<div class="codeeditor" 
+										data-bind="codemirror:{ data: snippetCode, options:{mode: text/x-mssql,theme: base16-light,smartIndent: true,tabSize: 4,language: sql,lineNumbers: true}}"></div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</form>
-			</div>
-			
-			<div>
-				<div>ViewModel:</div>
-				<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
 			</div>
 			
 			<div>

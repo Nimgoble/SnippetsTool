@@ -49,4 +49,5 @@ var Snippet = function()
 	this.title = ko.observable("Title");
 	this.description = ko.observable("Description");
 	this.snippetTypes = ko.observableArray([]);
+	this.snippetCode = ko.observable(null);
 }
