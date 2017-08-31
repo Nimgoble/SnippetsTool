@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">	
 	<head>
-		<title>	SQL Snippets</title>
+		<title>SQL Snippets</title>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,74 +27,77 @@
 	</head>
     <body data-spy="scroll" data-target=".navbar" data-offset="10">
 		<div class='container-fluid'>
-			
-			<div class='row align-items-center m-3'>
-				<div class='col-md-2'>
-					<h1 class='no-margin'>Snippets</h1>
-				</div>
-				<div class='col-md-1'>
-					<button id="add-snippet" class='btn btn-default btn-circle' type="button" data-bind="click: addSnippet">
-						<i class='glyphicon glyphicon-plus'></i>
-					</button>
-				</div>
-				<div class='col-md-10'></div>
-			</div>
-			
-			<div class='row'>
-				<form>
-					<div id="snippets-container" class='container-fluid form-group row' data-bind="foreach: {data:snippets, afterRender:snippetAfterRender}">
-						<div class="snippet container-fluid form-group row align-items-center" >
-							<div class='form-group row align-items-center'>
-								<label class='col-form-label col-md-2'>Title</label>
-								<div class='col-md-4'>
-									<input class='form-control' data-bind="textInput: title" />
-								</div>
-								<div class='form-control-plaintext col-md-6'>
-									<button id="add-snippet" class='btn btn-default btn-circle mt-0' type="button" data-bind="click: function(){$root.removeSnippet($data);}">
-										<i class='glyphicon glyphicon-remove'></i>
-									</button>
-								</div>
-							</div>
-							
-							<div class='form-group row align-items-center'>
-								<label class='col-form-label col-md-2'>Description</label>
-								<div class='col-md-4'>
-									<input class='form-control' data-bind="textInput: description" />
-								</div>
-							</div>
-							
-							<div class='form-group row'>
-								<label class='col-form-label col-md-2'>Types</label>
-								<div class='col-md-2'>
-									<select class='form-control' data-bind="options: $root.snippetTypes, optionsText: 'name', selectedOptions: snippetTypes" multiple="true"></select>
-								</div>
-							</div>
-							
-							<div class='form-group row'>
-								<label class='col-form-label col-md-2'>Snippet Text:</label>
-								<div class='col-md-10'>
-									<div class="codeeditor" ></div>
-								</div>
-							</div>
+			<div class="row">	
+					<div class='row align-items-center m-3'>
+						<div class='col-md-2'>
+							<h1 class='no-margin'>Snippets</h1>
 						</div>
+						<div class='col-md-1'>
+							<button id="add-snippet" class='btn btn-default btn-circle' type="button" data-bind="click: addSnippet">
+								<i class='glyphicon glyphicon-plus'></i>
+							</button>
+						</div>
+						<div class='col-md-10'></div>
 					</div>
-				</form>
+					
+					<div class='row'>
+						<form>
+							<div id="snippets-container" class='container-fluid form-group row' data-bind="foreach: {data:snippets, afterRender:snippetAfterRender}">
+								<div class="snippet container-fluid form-group row align-items-center" >
+									
+									<!--NEW SNIPPET FORM-->
+									<div class='form-group row align-items-center'>
+										<label class='col-form-label col-md-2'>Title</label>
+										<div class='col-md-4'>
+											<input class='form-control' data-bind="textInput: title" />
+										</div>
+										<div class='form-control-plaintext col-md-6'>
+											<button id="add-snippet" class='btn btn-default btn-circle mt-0' type="button" data-bind="click: function(){$root.removeSnippet($data);}">
+												<i class='glyphicon glyphicon-remove'></i>
+											</button>
+										</div>
+									</div>
+									
+									<div class='form-group row align-items-center'>
+										<label class='col-form-label col-md-2'>Description</label>
+										<div class='col-md-4'>
+											<input class='form-control' data-bind="textInput: description" />
+										</div>
+									</div>
+									
+									<div class='form-group row'>
+										<label class='col-form-label col-md-2'>Types</label>
+										<div class='col-md-2'>
+											<select class='form-control' data-bind="options: $root.snippetTypes, optionsText: 'name', selectedOptions: snippetTypes" multiple="true"></select>
+										</div>
+									</div>
+									
+									<div class='form-group row'>
+										<label class='col-form-label col-md-2'>Snippet Text:</label>
+										<div class='col-md-10'>
+											<div class="codeeditor" ></div>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</form>
+					</div>
+					
+					<div id="v-model">
+						<div>ViewModel:</div>
+						<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+					</div>
+					
+					<div>
+						<button id="save-snippet" type="button">Save Snippet(s)</button>
+					</div>
+
 			</div>
-			
-			<div>
-				<div>ViewModel:</div>
-				<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
-			</div>
-			
-			<div>
-				<button id="save-snippet" type="button">Save Snippet(s)</button>
-			</div>
-			
 			<div class="push"></div>
-			<script src="scripts/bootstrap.min.js"></script>
 		</div>
-		<div id="footer">
-			
-		</div>
+
+			<div id="footer"></div>
+		<script src="scripts/bootstrap.min.js"></script>
     </body>
 </html>
