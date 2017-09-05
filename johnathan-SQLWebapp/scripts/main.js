@@ -6,6 +6,7 @@ var MainViewModel = function()
 		new SnippetType("Expansion", "Allows the code snippet to be inserted at the cursor.", "Expansion"),
 		new SnippetType("Surrounds With", "Allows the code snippet to be placed around a selected piece of code.", "SurroundsWith")
 	];
+	this.output = ko.observable();
 	
 	this.addSnippet = function()
 	{
@@ -16,24 +17,25 @@ var MainViewModel = function()
 	{
 		this.snippets.remove(snippet);
 	}
-	
-	this.snippetAfterRender = function()
+
+	this.saveSnippets = function()
 	{
-		// var newOnes = $(".codeeditor:not(:has(.CodeMirror))").each
+		var template = $('#outputTemplate');
+		var templateText = template.html();
+		var rendered = Mustache.render(templateText, this);
+		this.output(rendered);
+		//var blob = new Blob([rendered], {type: "text/xml;charset=utf-8"});
+		var blob = new Blob([rendered], {type: "application/xml;"});
+		saveAs(blob, "snippetOutput.snippet");
+
+		// $.get
 		// (
-		// 	function(index, obj)
+		// 	'templates/output.mst',
+		// 	function(template)
 		// 	{
-		// 		var editor = CodeMirror(obj,
-		// 		{
-		// 			mode: "text/x-mssql",
-		// 			theme: "base16-light",
-		// 			smartIndent: true,
-		// 			tabSize: 4,
-		// 			language: "sql",
-		// 			lineNumbers: true
-		// 		});
+		// 		var rendered = Mustache.render(template, this);
+		// 		output(rendered);
 		// 	}
-		// );
 	}
 }
 
@@ -46,8 +48,18 @@ var SnippetType = function(name, description, value)
 
 var Snippet = function()
 {
+	this.id = GenerateUniqueID();
 	this.title = ko.observable("Title");
 	this.description = ko.observable("Description");
 	this.snippetTypes = ko.observableArray([]);
-	this.snippetCode = ko.observable(null).withPausing();
+	this.snippetCode = ko.observable(null);
 }
+
+var GenerateUniqueID = 
+(
+	function()
+	{
+		var id = 0;
+		return function(){return id++;};
+	}
+)();
