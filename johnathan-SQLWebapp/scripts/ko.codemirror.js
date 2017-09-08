@@ -5,6 +5,9 @@ ko.bindingHandlers.codemirror =
     {
         var options = valueAccessor();
         options.codeMirrorOptions.value = ko.utils.unwrapObservable(options.binding) || '';
+        var languageOption = viewModel.language;
+        options.codeMirrorOptions.mode = languageOption.codeMirrorMode;
+        options.codeMirrorOptions.language = languageOption.codeMirrorLanguage;
         var editor = CodeMirror(element, options.codeMirrorOptions);
 
         editor.on
@@ -18,6 +21,7 @@ ko.bindingHandlers.codemirror =
         );
 
         element.editor = editor;
+        viewModel.editor(editor);
     },
     update: function(element, valueAccessor, allBindings, viewModel, bindingContext) 
     {

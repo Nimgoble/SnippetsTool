@@ -14,7 +14,12 @@
 		<script src="scripts/knockout-3.4.2.js"></script>
 		<script src="scripts/codemirror.js"></script>
 		<script src="scripts/ko.codemirror.js"></script>
-		<script src="scripts/sql.js"></script>
+		<script src="scripts/modes/sql.js"></script>
+		<script src="scripts/modes/clike.js"></script>
+		<script src="scripts/modes/htmlmixed.js"></script>
+		<script src="scripts/modes/vb.js"></script>
+		<script src="scripts/modes/xml.js"></script>
+		<script src="scripts/modes/javascript.js"></script>
 		<script src="scripts/script.js"></script>
 		<script src="scripts/mustache.js"></script>
 		<script src="scripts/FileSaver.js"></script>
@@ -39,7 +44,7 @@
 			<div class='col-md-10'>
 				<div class="row">	
 						<div class='row align-items-center m-3'>
-							<div class='col-md-2'>
+							<div class='col-md-3'>
 								<h1 class='no-margin'>Snippets</h1>
 							</div>
 							<div class='col-md-1'>
@@ -58,10 +63,10 @@
 										<!--NEW SNIPPET FORM-->
 										<div class='form-group row align-items-center'>
 											<label class='col-form-label col-md-2'>Title</label>
-											<div class='col-md-4'>
+											<div class='col-md-6'>
 												<input class='form-control' data-bind="textInput: title" />
 											</div>
-											<div class='form-control-plaintext col-md-6'>
+											<div class='form-control-plaintext col-md-4'>
 												<button id="add-snippet" class='btn btn-default btn-circle mt-0' type="button" data-bind="click: function(){$root.removeSnippet($data);}">
 													<i class='glyphicon glyphicon-remove'></i>
 												</button>
@@ -70,20 +75,27 @@
 										
 										<div class='form-group row align-items-center'>
 											<label class='col-form-label col-md-2'>Description</label>
-											<div class='col-md-4'>
+											<div class='col-md-6'>
 												<input class='form-control' data-bind="textInput: description" />
 											</div>
 										</div>
 										
 										<div class='form-group row'>
 											<label class='col-form-label col-md-2'>Types</label>
-											<div class='col-md-2'>
-												<select class='form-control' data-bind="options: $root.snippetTypes, optionsText: 'name', selectedOptions: snippetTypes" multiple="true"></select>
+											<div class='col-md-3'>
+												<select class='form-control' data-bind="options: $root.snippetTypes, optionsText: 'name', selectedOptions: snippetTypes" multiple></select>
+											</div>
+										</div>
+
+										<div class='form-group row'>
+											<label class='col-form-label col-md-2'>Snippet Language</label>
+											<div class='col-md-3'>
+												<select class='form-control' data-bind="options: $root.languages, optionsText: 'text', value: language, event: { 'click': onChange($data), 'keypress': onChange($data), 'keyup': onChange($data) }" > </select>
 											</div>
 										</div>
 										
 										<div class='form-group row'>
-											<label class='col-form-label col-md-2'>Snippet Text:</label>
+											<label class='col-form-label col-md-2'>Snippet Text</label>
 											<div class='col-md-10'>
 												<div class="codeeditor" data-bind="codemirror: { binding: snippetCode, codeMirrorOptions: { mode: 'text/x-mssql', theme: 'base16-light', smartIndent: true, tabSize: 4, language: 'sql', lineNumbers: true }}" ></div>
 												<!--<div class="codeeditor" data-bind="codemirror: { testProperty: 1, testPropert2: 2}" ></div>-->
@@ -100,7 +112,7 @@
 							<div>ViewModel:</div>
 							<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
 						</div>
-	
+						
 						<div id="output">
 							<div>Output:</div>
 							<pre data-bind="text: output"></pre>
@@ -122,7 +134,7 @@
 		<pre id="outputTemplate" style="display:none">
 <?xml version="1.0" encoding="utf-8" ?>
 <CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
-	{{#snippets}}
+    {{#snippets}}
 	<CodeSnippet Format="1.0.0">
 		<Header>
 			<Title>{{title}}</Title>
@@ -130,18 +142,18 @@
 			<Description>{{description}}</Description>
 			<Author></Author>
 			<SnippetTypes>
-				{{#snippetTypes}}
-				<SnippetType>{{value}}</SnippetType>
-				{{/snippetTypes}}
+                {{#snippetTypes}}
+                <SnippetType>{{value}}</SnippetType>
+                {{/snippetTypes}}
 			</SnippetTypes>
 		</Header>
 		<Snippet>
 			<Declarations></Declarations>
-			<Code Language="SQL"><![CDATA[{{snippetCode}}]]>
+			<Code Language="{{language.attributeValue}}"><![CDATA[{{snippetCode}}]]>
 			</Code>
 		</Snippet>
 	</CodeSnippet>
-	{{/snippets}}
+    {{/snippets}}
 </CodeSnippets>
 		</pre>
     </body>

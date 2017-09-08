@@ -15,7 +15,7 @@
 		</Header>
 		<Snippet>
 			<Declarations></Declarations>
-			<Code Language="SQL"><![CDATA[{{snippetCode}}]]>
+			<Code Language="{{language.attributeValue}}"><![CDATA[{{snippetCode}}]]>
 			</Code>
 		</Snippet>
 	</CodeSnippet>

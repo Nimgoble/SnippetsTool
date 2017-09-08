@@ -1,24 +1,39 @@
-var MainViewModel = function()
+class MainViewModel
 {
-	this.snippets = ko.observableArray([]);
-	this.snippetTypes = 
-	[
-		new SnippetType("Expansion", "Allows the code snippet to be inserted at the cursor.", "Expansion"),
-		new SnippetType("Surrounds With", "Allows the code snippet to be placed around a selected piece of code.", "SurroundsWith")
-	];
-	this.output = ko.observable();
-	
-	this.addSnippet = function()
+	constructor()
 	{
-		this.snippets.push(new Snippet());
+		this.snippets = ko.observableArray([]);
+		this.snippetTypes = 
+		[
+			new SnippetType("Expansion", "Allows the code snippet to be inserted at the cursor.", "Expansion"),
+			new SnippetType("Surrounds With", "Allows the code snippet to be placed around a selected piece of code.", "SurroundsWith")
+		];
+		this.languages = 
+		[
+			new LanguageOption('C#', 'CSharp', 'text/x-csharp', 'csharp'),
+			new LanguageOption('SQL', 'SQL', 'text/x-mssql', 'sql'),
+			new LanguageOption('C++', 'CPP', 'text/x-c++src', 'c++'),
+			new LanguageOption('VB', 'VB', 'text/x-vb', 'vb'),
+			new LanguageOption('JavaScript', 'JavaScript', 'text/javascript', 'javascript'),
+			new LanguageOption('HTML', 'HTML', 'text/html', 'html'),
+			new LanguageOption('XML', 'XML', 'application/xml', 'xml')
+		];
+		this.output = ko.observable();
+	}
+
+	addSnippet()
+	{
+		var newSnippet = new Snippet();
+		newSnippet.language = this.languages[0];
+		this.snippets.push(newSnippet);
 	}
 	
-	this.removeSnippet = function(snippet)
+	removeSnippet(snippet)
 	{
 		this.snippets.remove(snippet);
 	}
 
-	this.saveSnippets = function()
+	saveSnippets()
 	{
 		var template = $('#outputTemplate');
 		var templateText = template.html();
@@ -37,23 +52,59 @@ var MainViewModel = function()
 		// 		output(rendered);
 		// 	}
 	}
-}
+};
 
-var SnippetType = function(name, description, value)
+class SnippetType
 {
-	this.name = name;
-	this.description = description;
-	this.value = value;
-}
+	constructor(name, description, value)
+	{
+		this.name = name;
+		this.description = description;
+		this.value = value;
+	}
+};
 
-var Snippet = function()
+class LanguageOption
 {
-	this.id = GenerateUniqueID();
-	this.title = ko.observable("Title");
-	this.description = ko.observable("Description");
-	this.snippetTypes = ko.observableArray([]);
-	this.snippetCode = ko.observable(null);
-}
+	constructor(text, attributeValue, codeMirrorMode, codeMirrorLanguage)
+	{
+		this.text = text;
+		this.attributeValue = attributeValue;
+		this.codeMirrorMode = codeMirrorMode;
+		this.codeMirrorLanguage = codeMirrorLanguage;
+	}
+};
+
+class Snippet
+{
+	constructor()
+	{
+		var self = this;
+		this.id = GenerateUniqueID();
+		this.title = ko.observable("Title");
+		this.description = ko.observable("Description");
+		this.snippetTypes = ko.observableArray([]);
+		this.language = ko.observable(null);
+		this.snippetCode = ko.observable(null);
+		this.editor = ko.observable(null);
+		// self.language.extend({ notify: 'always' });
+		// self.language.subscribe
+		// (
+		// 	function(newValue)
+		// 	{
+		// 		alert(JSON.stringify(newValue));
+		// 		if(this.editor !== null)
+		// 		{
+		// 			if(this.language !== null)
+		// 			{
+		// 				this.editor.setOption("mode", language.codeMirrorMode);
+		// 				this.editor.setOption("language", language.codeMirrorLanguage);
+		// 			}
+		// 		}
+		// 	}.bind(this)
+		// );
+	}
+};
 
 var GenerateUniqueID = 
 (
@@ -63,3 +114,16 @@ var GenerateUniqueID =
 		return function(){return id++;};
 	}
 )();
+
+function onChange(dataContext)
+{
+	var editor = dataContext.editor();
+	if(editor !== null)
+	{
+		if(dataContext.language !== null)
+		{
+			editor.setOption("mode", dataContext.language.codeMirrorMode);
+			editor.setOption("language", dataContext.language.codeMirrorLanguage);
+		}
+	}
+}
