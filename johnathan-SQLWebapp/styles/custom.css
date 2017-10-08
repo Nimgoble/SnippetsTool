@@ -75,7 +75,7 @@ form.typeSelection {
 	background-color: #1979CA; /* Blue */
 	border: none;
 	color: white;
-	margin-top: 1em;
+	/*margin-top: 1em;*/
 }
 
 #save-snippet:hover {
