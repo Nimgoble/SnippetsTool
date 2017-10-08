@@ -33,102 +33,84 @@
 		);
     </script>
 	</head>
-    <body data-spy="scroll" data-target=".navbar" data-offset="10">
-		<div class='container-fluid'>
-			<!--Sidebar-->
-			<div class='col-md-2'>
-				<div id="side-bar" class='row fill'>
-				</div>
-			</div>
-			<!--Main Content-->
-			<div class='col-md-10'>
-				<div class="row">	
-						<div class='row align-items-center m-3'>
-							<div class='col-md-3'>
-								<h1 class='no-margin'>Snippets</h1>
-							</div>
-							<div class='col-md-1'>
-								<button id="add-snippet" class='btn btn-default btn-circle' type="button" data-bind="click: addSnippet">
-									<i class='glyphicon glyphicon-plus'></i>
-								</button>
-							</div>
-							<div class='col-md-10'></div>
+    <body data-spy="scroll" data-target=".sidebar" data-offset="10">
+				<!-- Navbar -->
+				<nav class="navbar navbar-inverse navbar-fixed-top">
+						<div class="navbar-header">
+							<a class="navbar-brand" href="#">Snippet Tool</a>
 						</div>
-						
-						<div class='row'>
-							<form>
-								<div id="snippets-container" class='container-fluid form-group row' data-bind="foreach: {data:snippets}">
-									<div data-bind="attr: {'id': id}" class="snippet container-fluid form-group row align-items-center" >
-										
-										<!--NEW SNIPPET FORM-->
-										<div class='form-group row align-items-center'>
-											<label class='col-form-label col-md-2'>Title</label>
-											<div class='col-md-6'>
-												<input class='form-control' data-bind="textInput: title" />
-											</div>
-											<div class='form-control-plaintext col-md-4'>
-												<button id="add-snippet" class='btn btn-default btn-circle mt-0' type="button" data-bind="click: function(){$root.removeSnippet($data);}">
-													<i class='glyphicon glyphicon-remove'></i>
-												</button>
-											</div>
-										</div>
-										
-										<div class='form-group row align-items-center'>
-											<label class='col-form-label col-md-2'>Description</label>
-											<div class='col-md-6'>
-												<input class='form-control' data-bind="textInput: description" />
-											</div>
-										</div>
-										
-										<div class='form-group row'>
-											<label class='col-form-label col-md-2'>Types</label>
-											<div class='col-md-3'>
-												<select class='form-control' data-bind="options: $root.snippetTypes, optionsText: 'name', selectedOptions: snippetTypes" multiple></select>
-											</div>
-										</div>
-
-										<div class='form-group row'>
-											<label class='col-form-label col-md-2'>Snippet Language</label>
-											<div class='col-md-3'>
-												<select class='form-control' data-bind="options: $root.languages, optionsText: 'text', value: language, event: { 'click': onChange($data), 'keypress': onChange($data), 'keyup': onChange($data) }" > </select>
-											</div>
-										</div>
-										
-										<div class='form-group row'>
-											<label class='col-form-label col-md-2'>Snippet Text</label>
-											<div class='col-md-10'>
-												<div class="codeeditor" data-bind="codemirror: { binding: snippetCode, codeMirrorOptions: { mode: 'text/x-mssql', theme: 'base16-light', smartIndent: true, tabSize: 4, language: 'sql', lineNumbers: true }}" ></div>
-												<!--<div class="codeeditor" data-bind="codemirror: { testProperty: 1, testPropert2: 2}" ></div>-->
-											</div>
-										</div>
-										
+					</nav>
+					<div id="wrapper">
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 sidebar">
+							<h1>Snippets</h1>
+					</div>
+					<div class="col-xs-3 col-sm-9 col-md-9 col-lg-10 content">
+							<div class='row'>
+									<div class='col-md-2'>
+										<button id="add-snippet" class='btn btn-default btn-circle' type="button" data-bind="click: addSnippet">
+											<i class='glyphicon glyphicon-plus'></i>
+										</button>
 									</div>
+									<div class='col-md-10'></div>
 								</div>
-							</form>
-						</div>
-						
-						<!--
-						<div id="v-model">
-							<div>ViewModel:</div>
-							<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
-						</div>
-						
-						<div id="output">
-							<div>Output:</div>
-							<pre data-bind="text: output"></pre>
-						</div>
-
-						-->
-						
-						<div>
-							<button id="save-snippet" type="button" data-bind="click: saveSnippets">Save Snippet(s)</button>
-						</div>
+								
+								<div class='row'>
+									<form>
+										<div id="snippets-container" class='container-fluid form-group row' data-bind="foreach: {data:snippets}">
+											<div data-bind="attr: {'id': id}" class="snippet container-fluid form-group row align-items-center" >
+												<!--NEW SNIPPET FORM-->
+												<div class='form-group row align-items-center'>
+													<label class='col-form-label col-md-2'>Title</label>
+													<div class='col-md-6'>
+														<input class='form-control' data-bind="textInput: title" />
+													</div>
+													<div class='form-control-plaintext col-md-4'>
+														<button id="add-snippet" class='btn btn-default btn-circle mt-0' type="button" data-bind="click: function(){$root.removeSnippet($data);}">
+															<i class='glyphicon glyphicon-remove'></i>
+														</button>
+													</div>
+												</div>
+												
+												<div class='form-group row align-items-center'>
+													<label class='col-form-label col-md-2'>Description</label>
+													<div class='col-md-6'>
+														<input class='form-control' data-bind="textInput: description" />
+													</div>
+												</div>
+												
+												<div class='form-group row'>
+													<label class='col-form-label col-md-2'>Types</label>
+													<div class='col-md-3'>
+														<select class='form-control' data-bind="options: $root.snippetTypes, optionsText: 'name', selectedOptions: snippetTypes" multiple></select>
+													</div>
+												</div>
 	
-				</div>
-				<div class="push"></div>
-			</div>
+												<div class='form-group row'>
+													<label class='col-form-label col-md-2'>Snippet Language</label>
+													<div class='col-md-3'>
+														<select class='form-control' data-bind="options: $root.languages, optionsText: 'text', value: language, event: { 'click': onChange($data), 'keypress': onChange($data), 'keyup': onChange($data) }" > </select>
+													</div>
+												</div>
+												
+												<div class='form-group row'>
+													<label class='col-form-label col-md-2'>Snippet Text</label>
+													<div class='col-md-10'>
+														<div class="codeeditor" data-bind="codemirror: { binding: snippetCode, codeMirrorOptions: { mode: 'text/x-mssql', theme: 'base16-light', smartIndent: true, tabSize: 4, language: 'sql', lineNumbers: true }}" ></div>
+														<!--<div class="codeeditor" data-bind="codemirror: { testProperty: 1, testPropert2: 2}" ></div>-->
+													</div>
+												</div>
+												
+											</div>
+										</div>
+									</form>
+								</div>
+					</div>
 		</div>
-		<div id="footer"></div>
+		<footer class="footer">
+			<div class="container-fluid">
+				
+			</div>
+		</footer>
 		<script src="scripts/bootstrap.min.js"></script>
 
 		<pre id="outputTemplate" style="display:none">

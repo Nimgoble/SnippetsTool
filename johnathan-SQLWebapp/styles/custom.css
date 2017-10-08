@@ -1,24 +1,49 @@
 body, html  {
-	background-color: #eee;
-	height: 100%;
+	background-color: white;
 	margin: 0;
 }
 
-.row {
+body {
+	display: block;
 	height: 100%;
+	margin-bottom: 50px;
 }
 
-.fill
-{
-	min-height: 100%;
-	height: 100%;
-}
-
-#side-bar {
+nav.navbar {
 	background-color: #1979CA; /* Blue */
 	border: none;
-	border-radius: 0px;
-	min-height: 800px;
+}
+
+.navbar-inverse .navbar-brand {
+	color: white;
+}
+
+#wrapper {
+	height: 95vh;
+	min-height: 100%;
+	padding-top: 50px;
+}
+
+.sidebar {
+	min-height: 100%;
+	border-right: solid 1px #eee;
+}
+
+.content {
+	padding-top: 10px;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	background-color: #f5f5f5;
+}
+
+.fill {
+	min-height: 100%;
+	height: 100%;
 }
 
 form.typeSelection {
@@ -77,6 +102,11 @@ form.typeSelection {
 	margin: 10px 5px 10px 5px;
 }
 
+#btn-wrapper {
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
 .btn-circle {
 	width: 30px;
 	height: 30px;
@@ -124,18 +154,33 @@ pre {
 .container-fluid {
 	padding: 10px 25px 10px 25px;
 	min-height: 100%;
-	margin-bottom: -50px;
 }
 
-#footer {
-	background-color: white; 
-	padding: 0;
+/* DESKTOP */
+@media (min-width: 1200px) {
+
 }
 
-#footer, .push {
-	height: 50px;
+/* LANDSCAPE TABLET AND MID DESKTOP */
+@media (min-width: 992px) and (max-width: 1199px) {
+
 }
 
-#v-model {
-	margin-top: 2em;
+/* PORTRAIT AND SMALL DESKTOP */
+@media (min-width: 768px) and (max-width: 992px) {
+
+}
+
+/* LANDSCAPE PHONE AND PORTRAIT TABLET */
+@media (max-width: 767px) {
+
+}
+
+/* PORTRAIT PHONE AND SMALLER */
+@media (max-width: 480px) {
+
+}
+
+@media only screen and (max-width: 300px) {
+
 }
