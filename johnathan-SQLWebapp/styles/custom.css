@@ -27,10 +27,13 @@ nav.navbar {
 .sidebar {
 	min-height: 100%;
 	border-right: solid 1px #eee;
+	position: fixed;
 }
 
 .content {
 	padding-top: 10px;
+	position: absolute;
+	left: 25vw;
 }
 
 .footer {
@@ -66,29 +69,26 @@ form.typeSelection {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    padding: 7px 16px;
-	margin-top: 1em;
-	margin-bottom: 1em;
+	padding: 7px 16px;
+	margin-left: 1em;
+	margin-top: -1em;
+	margin-bottom: 2em;
 }
 
-#add-snippet {
+#add-snippet, #remove-snippet {
 	background-color: #1979CA; /* Blue */
 	border: none;
 	color: white;
 	/*margin-top: 1em;*/
 }
 
-#save-snippet:hover {
+#add-snippet:hover, #save-snippet:hover, #remove-snippet:hover {
     background-color: #3d6299; /* Dark Blue */
 }
 
-#save-snippet:focus {
+#save-snippet, #remove-snippet:focus {
 	border: none; 
 	outline: none;
-}
-
-#add-snippet:hover {
-	background-color: #3d6299; /* Dark Blue */
 }
 
 #add-snippet:focus {
@@ -105,6 +105,27 @@ form.typeSelection {
 #btn-wrapper {
 	margin-top: 20px;
 	margin-bottom: 50px;
+}
+
+#add-snippet {
+	margin-top: 25px;
+}
+
+ol {
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+li a {
+	text-decoration: none;
+	color: black;
+	padding-left: 50%;
+	padding-right: 50%;
+	padding-top: .7em;
+	padding-bottom: .7em;
 }
 
 .btn-circle {

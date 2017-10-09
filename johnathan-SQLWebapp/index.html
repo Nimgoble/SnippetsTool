@@ -43,8 +43,8 @@
 		<div id="wrapper">
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 sidebar">
 				<div class='row' style="vertical-align: middle;">
-					<div class='col-md-10'><h1>Snippets</h1></div>
-					<div class='col-md-2'>
+					<div class='col-sm-9 col-md-10'><h1>Snippets</h1></div>
+					<div class='col-sm-3 col-md-2'>
 						<button id="add-snippet" class='btn btn-default btn-circle' type="button" data-bind="click: addSnippet">
 							<i class='glyphicon glyphicon-plus'></i>
 						</button>
@@ -53,12 +53,12 @@
 				
 				<ol class="row" data-bind="foreach: {data:snippets}">
 					<li style="vertical-align: middle;height:50px;">
-						<div class="col-md-10">
+						<div class="col-sm-9 col-md-10">
 							<a data-bind="attr: {'href': '#' + id}, text: title"></a>
 						</div>
 
-						<div class='form-control-plaintext col-md-2'>
-							<button id="add-snippet" class='btn btn-default btn-circle mt-0' type="button" data-bind="click: function(){$root.removeSnippet($data);}">
+						<div class='form-control-plaintext col-sm-3 col-md-2'>
+							<button id="remove-snippet" class='btn btn-default btn-circle mt-0' type="button" data-bind="click: function(){$root.removeSnippet($data);}">
 								<i class='glyphicon glyphicon-remove'></i>
 							</button>
 						</div>
@@ -109,8 +109,12 @@
 							</div>
 						</div>
 					</form>
+					<div>
+						<button id="save-snippet" type="button" data-bind="click: saveSnippets">Save Snippet(s)</button>
+					</div>
 				</div>
 			</div>
+
 		</div>
 		<!--
 		<footer class="footer">
