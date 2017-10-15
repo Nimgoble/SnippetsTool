@@ -42,9 +42,9 @@
 		</nav>
 		<div id="wrapper">
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2" id="sidebar">
-				<div class='row' style="vertical-align: middle;">
-					<div class='col-sm-9 col-md-10'><h1>Snippets</h1></div>
-					<div class='col-sm-3 col-md-2'>
+				<div class="row">
+					<div class='col-xs-12 col-sm-10 col-md-10'><h1>Snippets</h1></div>
+					<div class='col-xs-12 col-sm-2 col-md-2'>
 						<button id="add-snippet" class='btn btn-default btn-circle' type="button" data-bind="click: addSnippet">
 							<i class='glyphicon glyphicon-plus'></i>
 						</button>
@@ -53,11 +53,11 @@
 				
 				<ol data-bind="foreach: {data:snippets}">
 					<li>
-						<div class="list-space col-sm-9 col-md-10">
+						<div class="list-space col-xs-7 col-sm-9 col-md-10">
 							<a data-bind="attr: {'href': '#' + id}, text: title"></a>
 						</div>
 
-						<div class='form-control-plaintext col-sm-3 col-md-2'>
+						<div class='form-control-plaintext col-xs-5 col-sm-3 col-md-2'>
 							<button id="remove-snippet" class='btn btn-default btn-circle mt-0' type="button" data-bind="click: function(){$root.removeSnippet($data);}">
 								<i class='glyphicon glyphicon-remove'></i>
 							</button>
