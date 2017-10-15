@@ -81,12 +81,21 @@ class Snippet
 	{
 		var self = this;
 		this.id = GenerateUniqueID();
-		this.title = ko.observable("Title");
-		this.description = ko.observable("Description");
+		this.title = ko.observable();
+		this.description = ko.observable("");
 		this.snippetTypes = ko.observableArray([]);
 		this.language = ko.observable(null);
 		this.snippetCode = ko.observable(null);
 		this.editor = ko.observable(null);
+		this.linkTitle = ko.computed
+		(
+			function()
+			{
+				if(self === undefined)
+					return "(Untitled Snippet)";
+				return (self.title() === '' || self.title() === null || self.title() === undefined) ? "(Untitled Snippet)" : self.title();
+			}
+		);
 		// self.language.extend({ notify: 'always' });
 		// self.language.subscribe
 		// (

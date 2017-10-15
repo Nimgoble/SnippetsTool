@@ -54,7 +54,7 @@
 				<ol data-bind="foreach: {data:snippets}">
 					<li>
 						<div class="list-space col-xs-7 col-sm-9 col-md-10">
-							<a data-bind="attr: {'href': '#' + id}, text: title"></a>
+							<a data-bind="attr: {'href': '#' + id}, text: linkTitle"></a>
 						</div>
 
 						<div class='form-control-plaintext col-xs-5 col-sm-3 col-md-2'>
@@ -74,14 +74,14 @@
 								<div class='form-group row align-items-center'>
 									<label class='col-form-label col-md-2'>Title</label>
 									<div class='col-md-6'>
-										<input class='form-control' data-bind="textInput: title" />
+										<input class='form-control' data-bind="textInput: title" placeholder="Title" />
 									</div>
 								</div>
 								
 								<div class='form-group row align-items-center'>
 									<label class='col-form-label col-md-2'>Description</label>
 									<div class='col-md-6'>
-										<input class='form-control' data-bind="textInput: description" />
+										<input class='form-control' data-bind="textInput: description" placeholder="Description" />
 									</div>
 								</div>
 								
