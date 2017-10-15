@@ -33,7 +33,7 @@
 		);
     </script>
 	</head>
-    <body data-spy="scroll" data-target=".sidebar" data-offset="10">
+    <body data-spy="scroll" data-target="#sidebar" data-offset="10">
 		<!-- Navbar -->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-header">
@@ -41,7 +41,7 @@
 			</div>
 		</nav>
 		<div id="wrapper">
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 sidebar">
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2" id="sidebar">
 				<div class='row' style="vertical-align: middle;">
 					<div class='col-sm-9 col-md-10'><h1>Snippets</h1></div>
 					<div class='col-sm-3 col-md-2'>
@@ -51,9 +51,9 @@
 					</div>
 				</div>
 				
-				<ol class="row" data-bind="foreach: {data:snippets}">
-					<li style="vertical-align: middle;height:50px;">
-						<div class="col-sm-9 col-md-10">
+				<ol data-bind="foreach: {data:snippets}">
+					<li>
+						<div class="list-space col-sm-9 col-md-10">
 							<a data-bind="attr: {'href': '#' + id}, text: title"></a>
 						</div>
 
@@ -65,7 +65,7 @@
 					</li>
 				</ol>
 			</div>
-			<div class="col-xs-3 col-sm-9 col-md-9 col-lg-10 content">
+			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 content">
 				<div class='row'>
 					<form>
 						<div id="snippets-container" class='container-fluid form-group row' data-bind="foreach: {data:snippets}">
@@ -115,40 +115,40 @@
 				</div>
 			</div>
 
-		</div>
-		<!--
-		<footer class="footer">
-			<div class="container-fluid">
-				
+		</div>	
+		<div class="footer">
+			<div class="foot-container">
+				2017 - Johnathan Harris & Adam Minder
 			</div>
-		</footer>
-		-->
+		</div>
+
+
 		<script src="scripts/bootstrap.min.js"></script>
 
 		<pre id="outputTemplate" style="display:none">
-<?xml version="1.0" encoding="utf-8" ?>
-<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
-    {{#snippets}}
-	<CodeSnippet Format="1.0.0">
-		<Header>
-			<Title>{{title}}</Title>
-			<Shortcut></Shortcut>
-			<Description>{{description}}</Description>
-			<Author></Author>
-			<SnippetTypes>
-                {{#snippetTypes}}
-                <SnippetType>{{value}}</SnippetType>
-                {{/snippetTypes}}
-			</SnippetTypes>
-		</Header>
-		<Snippet>
-			<Declarations></Declarations>
-			<Code Language="{{language.attributeValue}}"><![CDATA[{{snippetCode}}]]>
-			</Code>
-		</Snippet>
-	</CodeSnippet>
-    {{/snippets}}
-</CodeSnippets>
+			<?xml version="1.0" encoding="utf-8" ?>
+			<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+				{{#snippets}}
+				<CodeSnippet Format="1.0.0">
+					<Header>
+						<Title>{{title}}</Title>
+						<Shortcut></Shortcut>
+						<Description>{{description}}</Description>
+						<Author></Author>
+						<SnippetTypes>
+							{{#snippetTypes}}
+							<SnippetType>{{value}}</SnippetType>
+							{{/snippetTypes}}
+						</SnippetTypes>
+					</Header>
+					<Snippet>
+						<Declarations></Declarations>
+						<Code Language="{{language.attributeValue}}"><![CDATA[{{snippetCode}}]]>
+						</Code>
+					</Snippet>
+				</CodeSnippet>
+				{{/snippets}}
+			</CodeSnippets>
 		</pre>
     </body>
 </html>
