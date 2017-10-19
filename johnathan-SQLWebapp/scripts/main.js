@@ -19,6 +19,7 @@ class MainViewModel
 			new LanguageOption('XML', 'XML', 'application/xml', 'xml')
 		];
 		this.output = ko.observable();
+		this.fileName = ko.observable();
 	}
 
 	addSnippet()
@@ -41,7 +42,9 @@ class MainViewModel
 		this.output(rendered);
 		//var blob = new Blob([rendered], {type: "text/xml;charset=utf-8"});
 		var blob = new Blob([rendered], {type: "application/xml;"});
-		saveAs(blob, "snippetOutput.snippet");
+		var fileName = (!this.fileName() || this.fileName().length === 0)  ? "snippetOutput" : this.fileName();
+		fileName += ".snippet";
+		saveAs(blob, fileName);
 
 		// $.get
 		// (

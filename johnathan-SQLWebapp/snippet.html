@@ -126,14 +126,15 @@
 		</div>	
 		<div class="footer">
 			<div class="container-fluid">
-				<div class="col-xs-8 col-sm-9 col-md-10">
+				<div class="col-xs-6 col-sm-6 col-md-7">
 					<p>2017 - Johnathan Harris & Adam Minder</p> 
 				</div>
 				
-				<div class="col-xs-4 col-sm-3 col-md-2">
-					<div class="text-center">	
-						<button id="save-snippet" type="button" data-bind="click: saveSnippets">Save Snippet(s)</button>
-					</div>
+				<div class="col-xs-6 col-sm-6 col-md-5">
+					<input type="text" data-bind="textInput: fileName" placeholder="File Name" style="height:25px;margin-right:15px;width:250px;" />
+					<span class="text-center" >	
+						<button id="save-snippet" type="button" data-bind="click: saveSnippets" >Save Snippet(s)</button>
+					</span>
 				</div>
 			</div>
 		</div>
