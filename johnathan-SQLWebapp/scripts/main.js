@@ -20,6 +20,7 @@ class MainViewModel
 		];
 		this.output = ko.observable();
 		this.fileName = ko.observable();
+		this.ViewDiv = ko.observable('index');
 	}
 
 	addSnippet()
