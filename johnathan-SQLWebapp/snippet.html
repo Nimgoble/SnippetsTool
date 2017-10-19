@@ -33,7 +33,7 @@
 		);
     </script>
 	</head>
-    <body data-spy="scroll" data-target="#sidebar" data-offset="10">
+    <body data-spy="scroll" data-target="#sidebar" data-offset="10" class="no-scroll">
 		<!-- Navbar -->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 				<div class="navbar-header">
@@ -55,7 +55,7 @@
 		<div id="wrapper">
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2" id="sidebar">
 				<div class="row">
-					<div class='col-xs-12 col-sm-10 col-md-10'><h1>Snippets</h1></div>
+					<div class='col-xs-12 col-sm-10 col-md-10'><h1 class="less-margin">Snippets</h1></div>
 					<div class='col-xs-12 col-sm-2 col-md-2'>
 						<button id="add-snippet" class='btn btn-default btn-circle' type="button" data-bind="click: addSnippet">
 							<i class='glyphicon glyphicon-plus'></i>
@@ -125,13 +125,15 @@
 			</div>
 		</div>	
 		<div class="footer">
-			<div class="foot-container">
-				<div class="col-sm-10">
+			<div class="container-fluid">
+				<div class="col-xs-8 col-sm-9 col-md-10">
 					<p>2017 - Johnathan Harris & Adam Minder</p> 
 				</div>
 				
-				<div class="col-sm-2">
-					<button id="save-snippet" type="button" data-bind="click: saveSnippets">Save Snippet(s)</button>
+				<div class="col-xs-4 col-sm-3 col-md-2">
+					<div class="text-center">	
+						<button id="save-snippet" type="button" data-bind="click: saveSnippets">Save Snippet(s)</button>
+					</div>
 				</div>
 			</div>
 		</div>
