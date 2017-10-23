@@ -21,6 +21,31 @@ class MainViewModel
 		this.output = ko.observable();
 		this.fileName = ko.observable();
 		this.ViewDiv = ko.observable('index');
+		this.hasShownInstructions = false;
+
+		var self = this;
+		this.ViewDiv.subscribe(
+			function(target){
+				if(target ==='tool' && self.hasShownInstructions === false)
+				{
+					var instructionsDiv = $('#add-instructions');
+					var popper = new Popper(
+						$('#add-snippet'),
+						instructionsDiv,
+						{
+							placement: 'right'
+						}
+					);
+		
+					instructionsDiv.show();
+					instructionsDiv.click(function(){
+						popper.destroy();
+						$('#add-instructions').hide();
+					})
+					self.hasShownInstructions = true;
+				}
+			}
+		);
 	}
 
 	addSnippet()

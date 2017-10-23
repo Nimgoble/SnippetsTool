@@ -226,6 +226,17 @@ ol li a:hover {
 	border-radius: 15px;
 }
 
+#add-instructions {
+	border: 1px black;
+	z-index: 1000;
+	background: #1979CA;
+	color: white;
+	padding: 5px;
+	margin: 5px;
+	border-radius: 25px;
+	cursor: pointer;
+}
+
 .no-margin {
 	margin: 0px;
 }

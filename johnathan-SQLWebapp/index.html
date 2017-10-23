@@ -23,6 +23,7 @@
 		<script src="scripts/script.js"></script>
 		<script src="scripts/mustache.js"></script>
 		<script src="scripts/FileSaver.js"></script>
+		<script src="scripts/popper.js"></script>
 		<script src="scripts/main.js"></script>
 		<script type="text/javascript">
         $(
@@ -36,38 +37,64 @@
     </script>
 	</head>
     <body data-spy="scroll" data-target="#sidebar" data-offset="10">
+		<div id="add-instructions" style="display:none;">Click here to add a snippet!</div>
 		<!-- Navbar -->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html">Snippet Tool</a>
-				</div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="#" data-bind="click: function(){$root.ViewDiv('index');}" id="nolight">Home</a></li>
-					<li><a href="#" data-bind="click: function(){$root.ViewDiv('help');}">Help</a></li>
-					<li><a href="#" data-bind="click: function(){$root.ViewDiv('tool');}">Tool</a></li>						
-				</div>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Snippet Tool</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="#" data-bind="click: function(){$root.ViewDiv('index');}" id="nolight">Home</a></li>
+				<li><a href="#" data-bind="click: function(){$root.ViewDiv('tool');}">Tool</a></li>
+				<li><a href="#" data-bind="click: function(){$root.ViewDiv('help');}">Help</a></li>
+			</div>
 		</nav>
         <div id="wrapper">
 			<div id="index" data-bind="visible: ViewDiv()==='index'" style="display:none;">
 				<div class="jumbotron">
 					<div class="container">
-						<h1 class="jumbo-head">Welcome to the Snippet Tool</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id elit metus. Duis tempus, ipsum quis auctor sagittis, tellus enim porta felis, ut bibendum augue lectus in ipsum. Vestibulum leo enim, rhoncus non arcu id, accumsan efficitur turpis. Ut ligula quam, fermentum in sollicitudin sed, malesuada id enim. Nullam finibus justo facilisis quam fringilla porta. Sed feugiat nisl molestie sapien rhoncus finibus. Proin euismod imperdiet felis, sit amet dapibus sapien posuere sed. Sed interdum mauris quis consequat semper. In ac quam condimentum massa fermentum tempor.</p>
-						<p class="push">Vivamus fringilla velit vel sapien vulputate, quis tincidunt enim hendrerit. Pellentesque quis mauris suscipit, euismod neque nec, laoreet lectus. Aliquam vitae cursus turpis. Nullam eleifend facilisis augue id tristique. Mauris lacus risus, porttitor eget auctor ac, rutrum eu justo. Etiam bibendum semper nulla sit amet ultrices. Cras iaculis orci condimentum enim tincidunt, nec accumsan ipsum blandit. Duis sed orci feugiat, dignissim tortor sit amet, pulvinar sem.</p>
-						<a id="get-started" href="snippet.html">Get Started</a>
-						<a id="get-started" href="help.html">View Docs</a>
+						<h1 class="jumbo-head"></h1>
+						<p>This Snippet Tool is a tool for creating snippets for Visual Studio and SQL Server Management Studio.</p>
+						<div style="text-align: center">
+							<img src="../images/vs.svg.png" width="400px" height="150px" style="margin-right:10px;" />
+							<img src="../images/sqlserver.jpg" width="400px" height="150px" style="margin-left:10px;" />
+						</div>
+						<!--<p class="push">Vivamus fringilla velit vel sapien vulputate, quis tincidunt enim hendrerit. Pellentesque quis mauris suscipit, euismod neque nec, laoreet lectus. Aliquam vitae cursus turpis. Nullam eleifend facilisis augue id tristique. Mauris lacus risus, porttitor eget auctor ac, rutrum eu justo. Etiam bibendum semper nulla sit amet ultrices. Cras iaculis orci condimentum enim tincidunt, nec accumsan ipsum blandit. Duis sed orci feugiat, dignissim tortor sit amet, pulvinar sem.</p>-->
+						<div style="margin-top:10px;height:100px;padding:20px;">
+							<a id="get-started" data-bind="click: function(){$root.ViewDiv('tool');}">Get Started</a>
+							<a id="get-started" data-bind="click: function(){$root.ViewDiv('help');}">View Docs</a>
+						</div>
 					</div>
 				</div>
 			</div>
             <div id="help" data-bind="visible: ViewDiv()==='help'" style="display:none;">
-
+				<div class="jumbotron">
+					<div class="container">
+						<div>
+							<h1 class="jumbo-head">Microsoft's Official Documentation</h1>
+						</div>
+						<p>
+							<ul>
+								<li>
+									<a href="https://msdn.microsoft.com/library/ms171418.aspx">Code Snippets Schema Reference</a>
+								</li>
+								<li>
+									<a href="https://msdn.microsoft.com/en-us/library/ms165394.aspx">Walkthrough: Creating a Code Snippet</a>
+								</li>
+								<li>
+									<a href="https://docs.microsoft.com/en-us/sql/relational-databases/scripting/add-transact-sql-snippets">Add Transact-SQL Snippets</a>
+								</li>
+							</ul>
+						</p>
+					</div>
+				</div>
 			</div>
 			<div id="tool" data-bind="visible: ViewDiv()==='tool'" style="display:none;">
 				<div class="row colorize">
@@ -153,19 +180,19 @@
 			</div>
         </div>
 		<div class="footer">
-                <div class="foot-container">
-					<div class="col-xs-6 col-sm-6 col-md-7">
-						<p>2017 - Johnathan Harris & Adam Minder</p> 
-					</div>
-					
-					<div class="col-xs-6 col-sm-6 col-md-5" data-bind="visible: ViewDiv()==='tool'">
-						<input type="text" data-bind="textInput: fileName" placeholder="File Name" style="height:25px;margin-right:15px;width:250px;" />
-						<span class="text-center" >	
-							<button id="save-snippet" type="button" data-bind="click: saveSnippets" >Save Snippet(s)</button>
-						</span>
-					</div>
-                </div>
-            </div>
+			<div class="foot-container">
+				<div class="col-xs-6 col-sm-6 col-md-7">
+					<p>2017 - Johnathan Harris & Adam Minder</p> 
+				</div>
+				
+				<div class="col-xs-6 col-sm-6 col-md-5" data-bind="visible: ViewDiv()==='tool'">
+					<input type="text" data-bind="textInput: fileName" placeholder="File Name" style="height:25px;margin-right:15px;width:250px;" />
+					<span class="text-center" >	
+						<button id="save-snippet" type="button" data-bind="click: saveSnippets" >Save Snippet(s)</button>
+					</span>
+				</div>
+			</div>
+		</div>
 
 
 		<script src="scripts/bootstrap.min.js"></script>
