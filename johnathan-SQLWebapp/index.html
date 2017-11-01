@@ -36,7 +36,7 @@
 		);
     </script>
 	</head>
-    <body data-spy="scroll" data-target="#sidebar" data-offset="10">
+    <body data-spy="scroll" data-target="#sidebar" data-offset="10" class="no-scroll">
 		<div id="add-instructions" style="display:none;">Click here to add a snippet!</div>
 		<!-- Navbar -->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -62,9 +62,13 @@
 					<div class="container">
 						<h1 class="jumbo-head"></h1>
 						<p>This Snippet Tool is a tool for creating snippets for Visual Studio and SQL Server Management Studio.</p>
-						<div style="text-align: center">
-							<img src="../images/vs.svg.png" width="400px" height="150px" style="margin-right:10px;" />
-							<img src="../images/sqlserver.jpg" width="400px" height="150px" style="margin-left:10px;" />
+						<div class="row no-gutter">
+							<div class="col-sm-6">	
+								<img src="../images/sqlserver.png" />
+							</div>
+							<div class="col-sm-6">
+								<img src="../images/vs.svg.png" />
+							</div>
 						</div>
 						<!--<p class="push">Vivamus fringilla velit vel sapien vulputate, quis tincidunt enim hendrerit. Pellentesque quis mauris suscipit, euismod neque nec, laoreet lectus. Aliquam vitae cursus turpis. Nullam eleifend facilisis augue id tristique. Mauris lacus risus, porttitor eget auctor ac, rutrum eu justo. Etiam bibendum semper nulla sit amet ultrices. Cras iaculis orci condimentum enim tincidunt, nec accumsan ipsum blandit. Duis sed orci feugiat, dignissim tortor sit amet, pulvinar sem.</p>-->
 						<div style="margin-top:10px;height:100px;padding:20px;">
@@ -80,8 +84,11 @@
 						<div>
 							<h1 class="jumbo-head">Microsoft's Official Documentation</h1>
 						</div>
+					</br>
 						<p>
-							<ul>
+							Follow the links below to be directed to the official Microsoft documentation regarding snippets.
+						</br>
+							<ul class="doc-list">
 								<li>
 									<a href="https://msdn.microsoft.com/library/ms171418.aspx">Code Snippets Schema Reference</a>
 								</li>
@@ -100,6 +107,7 @@
 				<div class="row colorize">
 					<div class="container">
 						<div class="text-center">	
+								<input type="text" data-bind="textInput: fileName" placeholder="File Name" style="height:25px;margin-right:15px;width:250px;" />
 							<button id="save-snippet" type="button" data-bind="click: saveSnippets">Save Snippet(s)</button>
 						</div>
 					</div>
@@ -186,10 +194,7 @@
 				</div>
 				
 				<div class="col-xs-6 col-sm-6 col-md-5" data-bind="visible: ViewDiv()==='tool'">
-					<input type="text" data-bind="textInput: fileName" placeholder="File Name" style="height:25px;margin-right:15px;width:250px;" />
-					<span class="text-center" >	
-						<button id="save-snippet" type="button" data-bind="click: saveSnippets" >Save Snippet(s)</button>
-					</span>
+
 				</div>
 			</div>
 		</div>
