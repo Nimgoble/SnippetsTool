@@ -22,34 +22,57 @@ class MainViewModel
 		this.fileName = ko.observable();
 		this.ViewDiv = ko.observable('index');
 		this.hasShownInstructions = false;
+		this.popper = null;
 
 		var self = this;
 		this.ViewDiv.subscribe(
 			function(target){
 				if(target ==='tool' && self.hasShownInstructions === false)
 				{
-					var instructionsDiv = $('#add-instructions');
-					var popper = new Popper(
-						$('#add-snippet'),
-						instructionsDiv,
-						{
-							placement: 'right'
-						}
-					);
-		
-					instructionsDiv.show();
-					instructionsDiv.click(function(){
-						popper.destroy();
-						$('#add-instructions').hide();
-					})
-					self.hasShownInstructions = true;
+					self.showPopper();
+				}
+				else if (target !== 'tool')
+				{
+					self.hidePopper();
 				}
 			}
 		);
 	}
+	showPopper()
+	{
+		var self = this;
+		var instructionsDiv = $('#add-instructions');
+		self.popper = new Popper(
+			$('#add-snippet'),
+			instructionsDiv,
+			{
+				placement: 'right'
+			}
+		);
+
+		instructionsDiv.show();
+		instructionsDiv.click(function(){
+			self.popper.destroy();
+			self.popper = null;
+			$('#add-instructions').hide();
+		})
+		self.hasShownInstructions = true;
+	}
+
+	hidePopper()
+	{
+		var self = this;
+		if(self.popper !== null)
+		{
+			self.popper.destroy();
+			self.popper = null;	
+		}
+		$('#add-instructions').hide();
+	}
 
 	addSnippet()
 	{
+		this.hidePopper();
 		var newSnippet = new Snippet();
 		newSnippet.language = this.languages[0];
 		this.snippets.push(newSnippet);
