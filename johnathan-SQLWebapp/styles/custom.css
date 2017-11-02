@@ -19,6 +19,23 @@ img {
 	max-width: 100%;
 }
 
+#brand-image {
+	width: 3em;
+}
+
+.navbar-brand {
+	padding-top: .5em;
+}
+
+.mvs {
+	margin-top: 3em;
+}
+
+.sqls {
+	margin-top: 1em;
+	margin-bottom: 2em;
+}
+
 .saver {
 	margin-left: 0px;
 }
@@ -135,6 +152,7 @@ form.typeSelection {
 	text-decoration: none;
 	padding: 1.5rem 2.5rem;
 	margin-right: 1em;
+	font-weight: bolder;
 }
 
 #save-snippet {

@@ -47,7 +47,10 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html">Snippet Tool</a>
+				<a class="navbar-brand" href="index.html">
+					<img src="../images/brand.png" id="brand-image" style="display: inline-block;">
+					<span style="display: inline-block;">Snippet Tool</span>
+				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
@@ -64,14 +67,14 @@
 						<p>This Snippet Tool is a tool for creating snippets for Visual Studio and SQL Server Management Studio.</p>
 						<div class="row no-gutter">
 							<div class="col-sm-6">	
-								<img src="../images/sqlserver.png" />
+								<img src="../images/sqlserver.png" class="sqls"/>
 							</div>
 							<div class="col-sm-6">
-								<img src="../images/vs.svg.png" />
+								<img src="../images/vs.svg.png" class="mvs"/>
 							</div>
 						</div>
 						<!--<p class="push">Vivamus fringilla velit vel sapien vulputate, quis tincidunt enim hendrerit. Pellentesque quis mauris suscipit, euismod neque nec, laoreet lectus. Aliquam vitae cursus turpis. Nullam eleifend facilisis augue id tristique. Mauris lacus risus, porttitor eget auctor ac, rutrum eu justo. Etiam bibendum semper nulla sit amet ultrices. Cras iaculis orci condimentum enim tincidunt, nec accumsan ipsum blandit. Duis sed orci feugiat, dignissim tortor sit amet, pulvinar sem.</p>-->
-						<div style="margin-top:10px;height:100px;padding:20px;">
+						<div style="margin-top:10px;height:100px;padding-top:20px;">
 							<a id="get-started" data-bind="click: function(){$root.ViewDiv('tool');}">Get Started</a>
 							<a id="get-started" data-bind="click: function(){$root.ViewDiv('help');}">View Docs</a>
 						</div>
