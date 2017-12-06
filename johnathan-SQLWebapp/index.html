@@ -36,7 +36,7 @@
 		);
     </script>
 	</head>
-    <body data-spy="scroll" data-target="#sidebar" data-offset="10" class="no-scroll">
+    <body data-spy="scroll" data-target="#sidebar" data-offset="10" class="">
 		<div id="add-instructions" style="display:none;">Click here to add a snippet!</div>
 		<!-- Navbar -->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -47,7 +47,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html">
+				<a class="navbar-brand" href="#">
 					<img src="../images/brand.png" id="brand-image" style="display: inline-block;">
 					<span style="display: inline-block;">Snippet Tool</span>
 				</a>
@@ -60,6 +60,24 @@
 			</div>
 		</nav>
         <div id="wrapper">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			  <h3 class="modal-title" id="myModalLabel">It appears you are using a mobile device</h3>
+			</div>
+			<div class="modal-body">
+			  <p style="font-size: 1.2rem;">The SnippetTool is best experienced using a traditional keyboard and mouse and has not been optimized for mobile use. Please log in to the application on a desktop or laptop PC in order to use the SnippetTool.</p>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  <button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
 			<div id="index" data-bind="visible: ViewDiv()==='index'" style="display:none;">
 				<div class="jumbotron">
 					<div class="container">
@@ -75,8 +93,8 @@
 						</div>
 						<!--<p class="push">Vivamus fringilla velit vel sapien vulputate, quis tincidunt enim hendrerit. Pellentesque quis mauris suscipit, euismod neque nec, laoreet lectus. Aliquam vitae cursus turpis. Nullam eleifend facilisis augue id tristique. Mauris lacus risus, porttitor eget auctor ac, rutrum eu justo. Etiam bibendum semper nulla sit amet ultrices. Cras iaculis orci condimentum enim tincidunt, nec accumsan ipsum blandit. Duis sed orci feugiat, dignissim tortor sit amet, pulvinar sem.</p>-->
 						<div style="margin-top:10px;height:100px;padding-top:20px;">
-							<a id="get-started" data-bind="click: function(){$root.ViewDiv('tool');}">Get Started</a>
-							<a id="get-started" data-bind="click: function(){$root.ViewDiv('help');}">View Docs</a>
+							<button id="get-started" data-bind="click: function(){$root.ViewDiv('tool');}">Get Started</button>
+							<button id="get-started" data-bind="click: function(){$root.ViewDiv('help');}">View Docs</button>
 						</div>
 					</div>
 				</div>
@@ -192,18 +210,33 @@
         </div>
 		<div class="footer">
 			<div class="foot-container">
-				<div class="col-xs-6 col-sm-6 col-md-7">
-					<p>2017 - Johnathan Harris & Adam Minder</p> 
-				</div>
-				
-				<div class="col-xs-6 col-sm-6 col-md-5" data-bind="visible: ViewDiv()==='tool'">
-
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<p class="footer-text">SnippetTool © 2017</p> 
+					</div>
+					
+					<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+						<ul class="git-link">
+							<li>Developed by: Johnathan Harris<a href="https://github.com/Nimgoble"><img src="./images/giticon.svg" alt="" style="max-width: 2rem;"></a></li>
+							<li>Designed by: Adam Minder<a href="https://github.com/zerowr"><img src="./images/giticon.svg" alt="" style="max-width: 2rem;"></a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
 
 
 		<script src="scripts/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			// $(window).on('load',function(){
+			// 	$('#myModal').modal('show');
+			// });
+			$(window).resize(function(){
+				if ($(window).width() <= 480){	
+					$('#myModal').modal('show');
+				}	
+			});
+		</script>
 
 		<pre id="outputTemplate" style="display:none">
 			<?xml version="1.0" encoding="utf-8" ?>
